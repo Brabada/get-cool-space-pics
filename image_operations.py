@@ -27,23 +27,6 @@ def load_image(image_url, path_to_save, image_name):
         file.write(response.content)
 
 
-def fetch_spacex_last_launch(path_for_saved_image='./images'):
-    '''Fetching images from last or certain SpaceX launch and saving them'''
-
-    url = 'https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a'
-    response = requests.get(url)
-    response.raise_for_status()
-    images = response.json()
-    images_urls = images["links"]["flickr"]["original"]
-
-    for count, image in enumerate(images_urls):
-        load_image(
-            image,
-            path_for_saved_image,
-            f'spacex_{count}'
-        )
-
-
 def fetch_nasa_apod(path_for_saved_image='./images', image_count=20):
     '''Download 30 pictures of a day and saving them in path by arg'''
 
@@ -105,7 +88,6 @@ def main():
     path_for_saved_image = './images'
 
     try:
-        fetch_spacex_last_launch(path_for_saved_image)
         fetch_nasa_apod(path_for_saved_image, 5)
         fetch_nasa_epic(path_for_saved_image, 5)
     except requests.exceptions.HTTPError:
