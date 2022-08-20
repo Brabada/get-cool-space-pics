@@ -27,28 +27,6 @@ def load_image(image_url, path_to_save, image_name):
         file.write(response.content)
 
 
-def fetch_nasa_apod(path_for_saved_image='./images', image_count=20):
-    '''Download 30 pictures of a day and saving them in path by arg'''
-
-    nasa_token = os.getenv('API_TOKEN_NASA')
-    url = 'https://api.nasa.gov/planetary/apod'
-    params = {
-        'count': image_count,
-        'api_key': nasa_token,
-        'thumbs': True
-    }
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    response_urls = response.json()
-    for count, url in enumerate(response_urls):
-        if url['media_type'] == 'video':
-            image_url = url["thumbnail_url"]
-        else:
-            image_url = url["url"]
-
-        load_image(image_url, path_for_saved_image, f'nasa_apod_{count}')
-
-
 def assemble_nasa_epic_url(image_info, color_mode):
     '''Assembling info for EPIC image url'''
 
@@ -88,7 +66,6 @@ def main():
     path_for_saved_image = './images'
 
     try:
-        fetch_nasa_apod(path_for_saved_image, 5)
         fetch_nasa_epic(path_for_saved_image, 5)
     except requests.exceptions.HTTPError:
         print('Catch HTTPError')
