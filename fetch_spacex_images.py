@@ -1,9 +1,10 @@
+'''Fetching images from last or certain SpaceX launch id argument and saving
+them to ./images folder'''
+
 import requests
 import argparse
-from image_operations import load_image
 
-'''Fetching images from last or certain SpaceX launch id argument and saving 
-them to ./images folder'''
+from utils.image_operations import load_image
 
 
 def create_parser():

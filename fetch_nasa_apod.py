@@ -1,13 +1,13 @@
+'''\
+Script gets number of NASA APOD (Astronomy Picture Of Day) and downloads
+ and saving them in ./image folder.'''
+
 import os.path
 from dotenv import load_dotenv
 import requests
 import argparse
 
-from image_operations import load_image
-
-'''\
-Script gets number of NASA APOD (Astronomy Picture Of Day) and downloads
- and saving them in ./image folder.'''
+from utils.image_operations import load_image
 
 
 def create_parser():
@@ -56,6 +56,7 @@ def main():
         print(f'{image_count} were downloaded.')
     except requests.exceptions.HTTPError:
         print("Can't download APOD from server.")
+
 
 if __name__ == '__main__':
     main()

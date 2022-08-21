@@ -1,19 +1,19 @@
+'''\
+Take number of NASA EPIC (Earth PolychromatIc Camera) and
+saving them in "./images"
+'''
+
 import os.path
 import requests
 import argparse
 from dotenv import load_dotenv
 
-from image_operations import load_image
-
-'''\
-Take number of NASA EPIC (Earth PolychromatIc Camera) and 
-saving them in "./images"
-'''
+from utils.image_operations import load_image
 
 
 def create_parser():
     parser = argparse.ArgumentParser(
-        description='Take number of NASA EPIC (Earth PolychromatIc Camera) and '
+        description='Take number of NASA EPIC (Earth PolychromatIc Camera) and'
                     'saving them in "./images"'
     )
     parser.add_argument(

@@ -1,8 +1,21 @@
-# Get Space Pics
+# Publish Space Pics!
 
-Project that download cool space pics from latest SpaceX launches, NASA APOD
-(**A**stronomy **P**icture **O**f **D**ay) and NASA EPIC
-(**E**arth **P**olychromat**I**c **C**amera) or shortly beautiful pictures of Earth.
+Project that can download cool space pics and publish them to the TG channel.
+
+That's include:
+
+**fetch_nasa_apod.py** — download NASA APOD (**A**stronomy **P**icture **O**f **D**ay) to
+`'./images'` folder.
+
+**fetch_nasa_epic.py** — download NASA EPIC (**E**arth **P**olychromat**I**c **C**amera) 
+beautiful pictures of Earth to `'./images'` folder.
+
+**fetch_spacex_images.py** — download photos form latest SpaceX launch or from particular
+launch by launch id to `'./images'` folder
+
+**publish_images_tg_channel.py** — publish random photos from `'./images'` folder to the
+Telegram channel by bot.
+
 
 ## How to install
 For start you need `Python 3` and `pip`
@@ -21,12 +34,24 @@ $ cd "path_where_is_script"
 $ pip install -r requirements.txt
 ```
 
+Get Telegram bot token from [@BotFather](https://telegram.me/BotFather) if you don't have
+by [this manual](https://core.telegram.org/bots#3-how-do-i-create-a-bot). 
+After, add Telegram bot token to `.env` file:
+```shell
+$ echo -e TG_BOT_TOKEN=your_token\n >> .env
+```
+Create TG channel and add your bot to the channel. Then add `CHAT_ID` with your channel
+@channelname to .env file:
+```shell
+$ echo -e CHAT_ID=@coolspacepics
+```
+
 ## How to launch
 Launching script:
 ```shell
 $ cd "path_where_is_script"
-$ python main.py
+$ python publish_images_tg_channel.py -p hours_number
 ```
-After that you receive brand new pics in `./images` folder.
+`hours_number` is period in hours (float) for posting new image.
 
 ## Troubleshooting

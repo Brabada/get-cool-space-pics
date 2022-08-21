@@ -27,4 +27,4 @@ def load_image(image_url, path_to_save, image_name):
 
 
 def clear_images_folder():
-    shutil.rmtree('./images', ignore_errors=True)
+    shutil.rmtree('../images', ignore_errors=True)
