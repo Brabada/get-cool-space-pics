@@ -18,8 +18,10 @@ Telegram channel by bot.
 
 
 ## How to install
-For start, you need `Python 3` and `pip`
-Also you should get NASA token API from here: https://api.nasa.gov/
+For start, you need `Python 3` and `pip`.
+
+For launching `fetch_nasa_apod.py` and `fetch_nasa_epic.py` you should get NASA token
+API from here: https://api.nasa.gov/
 
 It's look like that: `a18b7a8d412ea74b17bda2a06f1b69fa3805a712`
 
@@ -48,13 +50,37 @@ $ echo -e CHAT_ID=@coolspacepics\n >> .env
 ```
 
 ## How to launch
-Launching script:
+#### publish_images_tg_channel.py
 ```shell
 $ cd "path_where_is_script"
-$ python publish_images_tg_channel.py -p hours_number
+$ python publish_images_tg_channel.py -p 1
 ```
-`hours_number` is period in hours (float) for posting new image.
+`-p` or `--period` is period in hours (float) for posting new image.
 
 Make sure that `./images` folder have images.
+
+#### fetch_nasa_apod.py
+```shell
+$ python fetch_nasa_apod.py -ic 1
+```
+`-ic` or `--image_count` — number of images to download. Takes int value.
+
+#### fetch_nasa_epic.py
+```shell
+$ python fetch_nasa_epic.py -ic 1
+```
+`-ic` or `--image_count` — number of images to download. Takes int value.
+
+#### fetch_spacex_images.py
+1. Download images from particular flight id:
+```shell
+$ python fetch_spacex_images.py -fl_id 5eb87d46ffd86e000604b388
+```
+`-fl_id` or `--flight_id` — flight id to find. Takes string.
+
+2. Download images from latest flight:
+```shell
+$ python fetch_spacex_images.py 
+```
 
 ## Troubleshooting
