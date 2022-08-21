@@ -25,5 +25,6 @@ def load_image(image_url, path_to_save, image_name):
     with open(f'{path_to_save}/{image_name}{image_extension}', 'wb') as file:
         file.write(response.content)
 
+
 def clear_images_folder():
     shutil.rmtree('./images', ignore_errors=True)
