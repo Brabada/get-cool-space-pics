@@ -25,12 +25,12 @@ def create_parser():
     return parser
 
 
-def assemble_nasa_epic_url(image_info, color_mode):
+def assemble_nasa_epic_url(epic_image_params, color_mode):
     """Assembling info for EPIC image url"""
 
     image_extension = 'png'
-    date = (image_info["date"].split()[0]).replace('-', '/')
-    image_name = f'{image_info["image"]}.{image_extension}'
+    date = (epic_image_params["date"].split()[0]).replace('-', '/')
+    image_name = f'{epic_image_params["image"]}.{image_extension}'
     image_url = f'https://epic.gsfc.nasa.gov/archive/{color_mode}/{date}/' \
                 f'{image_extension}/{image_name}'
     return image_url
@@ -50,11 +50,11 @@ def fetch_nasa_epic(nasa_token, image_count=1):
 
     response = requests.get(url, params=params)
     response.raise_for_status()
-    epic_info_list = response.json()
-    for count, image_info in enumerate(epic_info_list):
+    epic_info = response.json()
+    for count, epic_image_params in enumerate(epic_info):
         if count == image_count:
             break
-        epic_url = assemble_nasa_epic_url(image_info, color_mode)
+        epic_url = assemble_nasa_epic_url(epic_image_params, color_mode)
         load_image(epic_url, path_for_saved_image, f'epic_image_{count}')
 
 
