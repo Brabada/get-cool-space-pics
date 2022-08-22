@@ -1,7 +1,7 @@
-'''\
+"""\
 Take number of NASA EPIC (Earth PolychromatIc Camera) and
 saving them in "./images"
-'''
+"""
 
 import os.path
 import requests
@@ -26,7 +26,7 @@ def create_parser():
 
 
 def assemble_nasa_epic_url(image_info, color_mode):
-    '''Assembling info for EPIC image url'''
+    """Assembling info for EPIC image url"""
 
     image_extension = 'png'
     date = (image_info["date"].split()[0]).replace('-', '/')
@@ -37,7 +37,7 @@ def assemble_nasa_epic_url(image_info, color_mode):
 
 
 def fetch_nasa_epic(image_count=1):
-    '''Download image_count number of images from EPIC and save to arg path'''
+    """Download image_count number of images from EPIC and save to arg path"""
 
     path_for_saved_image = './images'
     nasa_token = os.getenv('API_TOKEN_NASA')

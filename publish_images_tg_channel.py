@@ -1,4 +1,4 @@
-'''Publish images to channel by bot every N hour'''
+"""Publish images to channel by bot every N hour"""
 
 import time
 import os.path
@@ -23,7 +23,7 @@ def create_parser():
 
 
 def send_photo(image_path):
-    '''Publish photo from image_path by bot to channel'''
+    """Publish photo from image_path by bot to channel"""
 
     tg_bot_token = os.getenv("TG_BOT_TOKEN")
     bot = telegram.Bot(token=tg_bot_token)
@@ -35,7 +35,7 @@ def send_photo(image_path):
 
 
 def get_images_paths(path_root):
-    '''Parse path_root for images and return list of images paths'''
+    """Parse path_root for images and return list of images paths"""
 
     images_paths = []
     for address, dirs, files in os.walk(path_root):

@@ -1,6 +1,6 @@
-'''\
+"""\
 Script gets number of NASA APOD (Astronomy Picture Of Day) and downloads
- and saving them in ./image folder.'''
+ and saving them in ./image folder."""
 
 import os.path
 from dotenv import load_dotenv
@@ -24,7 +24,7 @@ def create_parser():
 
 
 def fetch_nasa_apod(image_count=1):
-    '''Download 30 pictures of a day and saving them in path by arg'''
+    """Download image_count images of a day and saving them in path by arg"""
 
     path_for_saved_image = './images'
     nasa_token = os.getenv('API_TOKEN_NASA')

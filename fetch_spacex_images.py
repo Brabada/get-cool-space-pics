@@ -1,5 +1,5 @@
-'''Fetching images from last or certain SpaceX launch id argument and saving
-them to ./images folder'''
+"""Fetching images from last or certain SpaceX launch id argument and saving
+them to ./images folder"""
 
 import requests
 import argparse
@@ -37,8 +37,8 @@ def fetch_spacex_images(flight_url):
 
 
 def main():
-    '''Get flight_id and returned images (if they're exist) to ./image
-    folder'''
+    """Get flight_id and returned images (if they're exist) to ./image
+    folder"""
 
     parser = create_parser()
     args = parser.parse_args()
