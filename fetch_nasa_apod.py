@@ -23,11 +23,10 @@ def create_parser():
     return parser
 
 
-def fetch_nasa_apod(image_count=1):
+def fetch_nasa_apod(nasa_token, image_count=1):
     """Download image_count images of a day and saving them in path by arg"""
 
     path_for_saved_image = './images'
-    nasa_token = os.getenv('API_TOKEN_NASA')
     url = 'https://api.nasa.gov/planetary/apod'
     params = {
         'count': image_count,
@@ -48,11 +47,12 @@ def fetch_nasa_apod(image_count=1):
 
 def main():
     load_dotenv()
+    nasa_token = os.getenv('API_TOKEN_NASA')
     parser = create_parser()
     args = parser.parse_args()
     image_count = args.image_count
     try:
-        fetch_nasa_apod(image_count)
+        fetch_nasa_apod(nasa_token, image_count)
         print(f'{image_count} image(s) was/were successfully downloaded.')
     except requests.exceptions.HTTPError:
         print("Can't download APOD from server.")

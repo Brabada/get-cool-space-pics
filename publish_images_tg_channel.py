@@ -22,12 +22,10 @@ def create_parser():
     return parser
 
 
-def send_photo(image_path):
+def send_photo(image_path, tg_bot_token, chat_id):
     """Publish photo from image_path by bot to channel"""
 
-    tg_bot_token = os.getenv("TG_BOT_TOKEN")
     bot = telegram.Bot(token=tg_bot_token)
-    chat_id = os.getenv("CHAT_ID")
     bot.send_photo(
         chat_id=chat_id,
         photo=open(image_path, 'rb')
@@ -46,6 +44,9 @@ def get_images_paths(path_root):
 
 def main():
     load_dotenv()
+    tg_bot_token = os.getenv("TG_BOT_TOKEN")
+    chat_id = os.getenv("CHAT_ID")
+
     parser = create_parser()
     args = parser.parse_args()
     period = args.period * 3600
@@ -54,7 +55,7 @@ def main():
     while True:
         random.shuffle(images_paths)
         for image_path in images_paths:
-            send_photo(image_path)
+            send_photo(image_path, tg_bot_token, chat_id)
             time.sleep(period)
 
 

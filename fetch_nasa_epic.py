@@ -36,11 +36,10 @@ def assemble_nasa_epic_url(image_info, color_mode):
     return image_url
 
 
-def fetch_nasa_epic(image_count=1):
+def fetch_nasa_epic(nasa_token, image_count=1):
     """Download image_count number of images from EPIC and save to arg path"""
 
     path_for_saved_image = './images'
-    nasa_token = os.getenv('API_TOKEN_NASA')
 
     # Getting info for EPIC image url
     color_mode = 'enhanced'    # 'natural' or 'enhanced'
@@ -61,11 +60,13 @@ def fetch_nasa_epic(image_count=1):
 
 def main():
     load_dotenv()
+    nasa_token = os.getenv('API_TOKEN_NASA')
+
     parser = create_parser()
     args = parser.parse_args()
     image_count = args.image_count
     try:
-        fetch_nasa_epic(image_count)
+        fetch_nasa_epic(nasa_token, image_count)
         print(f'{image_count} image(s) was/were successfully downloaded.')
     except requests.exceptions.HTTPError:
         print("Can't download images from EPIC.")
