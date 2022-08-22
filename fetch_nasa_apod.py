@@ -53,7 +53,7 @@ def main():
     image_count = args.image_count
     try:
         fetch_nasa_apod(image_count)
-        print(f'{image_count} were downloaded.')
+        print(f'{image_count} image(s) was/were successfully downloaded.')
     except requests.exceptions.HTTPError:
         print("Can't download APOD from server.")
 

@@ -66,7 +66,7 @@ def main():
     image_count = args.image_count
     try:
         fetch_nasa_epic(image_count)
-        print(f'{image_count} images were successfully downloaded.')
+        print(f'{image_count} image(s) was/were successfully downloaded.')
     except requests.exceptions.HTTPError:
         print("Can't download images from EPIC.")
 
