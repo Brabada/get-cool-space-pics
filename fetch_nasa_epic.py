@@ -50,8 +50,8 @@ def fetch_nasa_epic(nasa_token, image_count=1):
 
     response = requests.get(url, params=params)
     response.raise_for_status()
-    epic_info = response.json()
-    for count, epic_image_params in enumerate(epic_info):
+    epic_images_params = response.json()
+    for count, epic_image_params in enumerate(epic_images_params):
         if count == image_count:
             break
         epic_url = assemble_nasa_epic_url(epic_image_params, color_mode)
